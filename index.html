@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" charset="utf-8">
+    <title>order</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/common.js"></script>
+    <script src="./js/index.js" ></script>
+    <script type="text/javascript">
+        /**
+        * @function payForCallback
+        * @param {*} res
+        */
+        function payForCallback(res) {
+            alert(res)
+            // To do something ..
+        }
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <header></header>
+        <section class="main">
+            <img class="demo_img" src="./images/demo.jpg" alt="image" srcset="">
+            <div class="content">
+                <p class="order_title">Title</p>
+                <p class="order_info">SomeThing...</p>
+                <div class="order_price">
+                    <p class="price_rmb">
+                        <span id="rmb">0.00</span>
+                        <span class="gmc_company">USDT</span>
+                    </p>
+                    <p class="price_gmc">
+                        ≈ <span id="gmc">1.00</span>
+                        <span class="gmc_company">GMC</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+        <footer class="my_footer" id="footerNav">
+            <div class="order_price pay_for">
+                <div class="payment">Pay total: </div>
+                <div>
+                    <p class="price_rmb">
+                        <span id="pay_rmb">0.00</span>
+                        <span class="gmc_company">USDT</span>
+                    </p>
+                    <p class="price_gmc">
+                        ≈ <span id="gmc_num" >1.00</span>
+                        <span class="gmc_company">GMC</span>
+                    </p>
+                </div>
+            </div>
+            <button id="pay" class="pay_btn">Pay</button>
+        </footer>
+    </div>
+</body>
+
+</html>

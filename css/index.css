@@ -1,0 +1,103 @@
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+Section,
+body,
+div,
+p,
+html,
+xml {
+    margin: 0;
+    padding: 0;
+}
+img {
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+#container {
+    position: relative;
+    height: 100%;
+    font-family: PingFangSC-Regular;
+    background-color: #fafafa;
+}
+.demo_img {
+     width: 100%;
+     border-radius: 0 0 5% 5%;   
+}
+.content {
+    position: relative;
+    margin: 0 10px;
+    padding: 15px;
+    top: -40px;
+    z-index: 2;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+}
+.order_title {
+    font-size: 20px;
+    font-weight: bold;
+}
+.order_info {
+    margin: 10px 0;
+    width: 100%;
+    font-size: 14px;
+    color: #999;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.price_rmb {
+    font-family: PingFangSC-Light;
+    font-size: 18px;
+    font-weight: bold;
+    color: red;
+}
+.price_gmc {
+    font-size: 14px;
+    color: #aaa;
+}
+.gmc_company {
+    font-size: 12px;
+}
+.my_footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    background-color: white;
+}
+.pay_for {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    flex-grow: 1;
+    text-align: right;
+}
+.payment {
+    margin-right: 5px;
+    flex-grow: 1;
+    font-size: 16px;
+    font-weight: bold;
+}
+.pay_btn {
+    width: 120px;
+    height: 100%;
+    font-size: 18px;
+    color: white;
+    background-color: #409EFF;
+    border: none;
+    outline: none;
+}
