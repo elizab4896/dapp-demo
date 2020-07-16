@@ -102,15 +102,10 @@ This function is used to call each other's methods across platforms to achieve c
      https://api.gmc-core.com/data/v3/api/gmc
 
      Response
-     {
-         "status": "1",
-         "message": "SECCESS",
-         "data": {
+         {
             "status": "1",
             "message": "SECCESS",
             "data": 1.388,
             "timestamp": "16/07/2020 08:44:01262"
-        },
-         "timestamp": "10/07/2020 06:14:27518"
-     }
+        }
      ```
