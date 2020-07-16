@@ -61,7 +61,7 @@ This function is used to call each other's methods across platforms to achieve c
      * address: Merchant authentication address
      */
      Get Request
-     https://ccmg.gmc-core.com/qdapps/v3/api/storePay/{orderId}?address=
+     https://api.gmc-core.com/data/v3/api/storePay/{orderId}?address=
      
      Response
      {
@@ -79,7 +79,7 @@ This function is used to call each other's methods across platforms to achieve c
       * address: Merchant authentication address
       */
      Get Request
-     https://ccmg.gmc-core.com/qdapps/v3/api/storePay/fundLog/{address}
+     https://api.gmc-core.com/data/v3/api/storePay/fundLog/{address}
      
      Response
      {
@@ -87,15 +87,30 @@ This function is used to call each other's methods across platforms to achieve c
          "message": "SECCESS",
          "data": [
              {
-                 "id": 7,
-                 "faddress": "",// Pay Address
-                 "amount": 0.80000,// Amount
                  "orderId": "6", // Order Number
                  "status": 8, // 1 Account not received, 8 Received account
                  "ptype": "GMC" // Coin type
              },
             ...
          ],
+         "timestamp": "10/07/2020 06:14:27518"
+     }
+     ```
+  3. Get GMC Price
+     ```
+     Get Request
+     https://api.gmc-core.com/data/v3/api/gmc
+
+     Response
+     {
+         "status": "1",
+         "message": "SECCESS",
+         "data": {
+            "status": "1",
+            "message": "SECCESS",
+            "data": 1.388,
+            "timestamp": "16/07/2020 08:44:01262"
+        },
          "timestamp": "10/07/2020 06:14:27518"
      }
      ```
