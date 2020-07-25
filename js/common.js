@@ -2,7 +2,7 @@ var app = {
     initialize: function() {
         window.terminal = this.getTerminal()
         this.ajax({
-            url:"https://ua2debug.com/data/v3/api/gmc",
+            url:"https://api.gmc-core.com/data/v3/api/gmc",
             type:"get",
             data: {
                 to: "CMY"
@@ -45,7 +45,9 @@ var app = {
 
     /**
      * @function ajax
-     * @param {*} options 
+     * @param {object} options 
+     * 
+     * Ajax encapsulation
      */
     ajax: function(options) {
         options = options || {}
@@ -92,7 +94,7 @@ var app = {
 
     /**
      * @function formatParams
-     * @param {*} data 
+     * @param {object} data 
      */
     formatParams: function(data) {
         let arr = []
@@ -105,7 +107,9 @@ var app = {
 
     /**
      * @function setupWebViewJavascriptBridge
-     * @param {*} callback 
+     * @param {function} callback 
+     * 
+     * Cross platform
      */
     setupWebViewJavascriptBridge: function(callback) {
         if (window.WebViewJavascriptBridge) {
