@@ -2,7 +2,6 @@ window.onload = function() {
     let payBtn = this.document.getElementById("pay")
     let gmcNUm = this.document.getElementById("gmc_num").innerText
 
-    app.initialize()
     let Num = "";
     for(var i=0;i<6;i++) {
         Num += Math.floor(Math.random()*10);
@@ -13,6 +12,13 @@ window.onload = function() {
         gmc_num: gmcNUm,
         address: "gmcf2b02c1d467c5d90c6dbebd5b7e0584bf8bcc420"
     }
+    app.initialize()
+    app.certificationAddress("gmcf2b02c1d467c5d90c6dbebd5b7e0584bf8bcc420").then(res => {
+        console.log(res) // Apply for mall test accoun 
+        params.address = res.data
+    })
+    
+    
     if (terminal == "ios") {
         let el = document.getElementById('footerNav')
         el.setAttribute('style', 'bottom: 49px')

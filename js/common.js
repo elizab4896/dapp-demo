@@ -1,4 +1,7 @@
 var app = {
+    /**
+     * @function initialize
+     */
     initialize: function() {
         window.terminal = this.getTerminal()
         this.ajax({
@@ -20,6 +23,24 @@ var app = {
             error: function(e) {
                 console.log(e)
             }
+        })
+    },
+
+    certificationAddress: function (addr) {
+        return new Promise((resolve, reject) => {
+            this.ajax({
+                url:"http://192.168.4.215/data/v3/api/storePay/testAccount/" + addr,
+                type:"get",
+                dataType: "json",
+                timeout: 10000,
+                contentType: "application/json",
+                success: function(data) {
+                    resolve(data)
+                },
+                error: function(e) {
+                    reject(e)
+                }
+            })
         })
     },
 
