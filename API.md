@@ -85,10 +85,18 @@ This function is used to call each other's methods across platforms to achieve c
     } else {
         payBtn.onclick = function (e) {
             let paramStr = JSON.stringify(params)
-            android.payAction(paramStr, callback(response) {
-                payForCallback(response)
-            })
+            android.payAction(paramStr) // After Android processes the payment interface, it will directly call the payForCallback function, which needs to be placed in the index.html payForCallback is declared on the file. The callback function will return the payment status after.
         }
+    }
+  ```
+  ```JavaScript
+    /**
+    * @function payForCallback
+    * @param {message: '', status: 1} res  // status: 0 --> fail, 1 --> success
+    */
+    function payForCallback(res) {
+        alert(res)
+        // To do something ..
     }
   ```
 
@@ -101,7 +109,7 @@ This function is used to call each other's methods across platforms to achieve c
      * address: Merchant authentication address
      */
      Get Request
-     https://api.gmc-core.com/data/v3/api/storePay/testAccount?address=
+     https://api.gmc-core.com/qdapps/v3/api/storePay/testAccount/{address}
      
      Response
      {
@@ -260,10 +268,18 @@ This function is used to call each other's methods across platforms to achieve c
     } else {
         payBtn.onclick = function (e) {
             let paramStr = JSON.stringify(params)
-            android.payAction(paramStr, callback(response) {
-                payForCallback(response) // 由于安卓问题，此回调函数放在index.html文件上声明
-            })
+            android.payAction(paramStr) // 安卓在处理完支付接口后，直接会调用payForCallback回调函数，此回调函数需放在index.html文件上声明payForCallback。该回调函数会返回支付后的支付状态等参数。
         }
+    }
+  ```
+  ```JavaScript
+    /**
+    * @function payForCallback
+    * @param {message: '', status: 1} res  // status: 0 --> fail, 1 --> success
+    */
+    function payForCallback(res) {
+        alert(res)
+        // To do something ..
     }
   ```
 
@@ -276,7 +292,7 @@ This function is used to call each other's methods across platforms to achieve c
      * address: Merchant authentication address
      */
      Get Request
-     https://api.gmc-core.com/data/v3/api/storePay/testAccount/{address}
+     https://api.gmc-core.com/qdapps/v3/api/storePay/testAccount/{address}
      
      Response
      {
