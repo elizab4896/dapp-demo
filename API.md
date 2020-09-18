@@ -70,7 +70,7 @@ This function is used to call each other's methods across platforms to achieve c
   ```JavaScript
     // index.js
     let params = {
-        order_id: "202005180029", // Generated and returned by the server
+        order_id: orderid, // Generated and returned by the server
         gmc_num: gmcNUm,
         address: "gmc59265e7673c997089e74ffedfgrw00e954787jkh" // Receiving address
     }
@@ -92,11 +92,22 @@ This function is used to call each other's methods across platforms to achieve c
   ```JavaScript
     /**
     * @function payForCallback
-    * @param {message: '', status: 1} res  // status: 0 --> fail, 1 --> success
+    * @param {message: '', status: 1} res  
+    * // status: {
+    *       '0': 'Network Error',
+    *       '1': 'Success',
+    *       '2': 'The payment function of the mall is temporarily closed',
+    *       '3': 'Wrong payment currency type of mall',
+    *       '4': 'Wrong amount',
+    *       '5': 'The mall is not a trusted address',
+    *       '6': 'Repeat payment for order',
+    *       '7': 'Payment account address does not exist',
+    *       '8': 'Insufficient account balance'
+    *    }
     */
     function payForCallback(res) {
         alert(res)
-        // To do something ..
+        // To do something ...
     }
   ```
 
@@ -253,7 +264,7 @@ This function is used to call each other's methods across platforms to achieve c
   ```JavaScript
     // index.js
     let params = {
-        order_id: "202005180029", // Generated and returned by the server
+        order_id: orderid, // Generated and returned by the server
         gmc_num: gmcNUm,
         address: "gmc59265e7673c997089e74ffedfgrw00e954787jkh" // 收款地址
     }
@@ -275,11 +286,22 @@ This function is used to call each other's methods across platforms to achieve c
   ```JavaScript
     /**
     * @function payForCallback
-    * @param {message: '', status: 1} res  // status: 0 --> fail, 1 --> success
+    * @param {message: '', status: 1} res  
+    * // status: {
+    *       '0': '网络异常',
+    *       '1': '支付成功',
+    *       '2': '商城支付功能暂时不开放',
+    *       '3': '商城支付货币类型错误',
+    *       '4': '金额有误',
+    *       '5': '商城不是可信任的地址',
+    *       '6': '订单重复支付',
+    *       '7': '支付账户地址不存在',
+    *       '8': '账户余额不足'  
+    *    }
     */
     function payForCallback(res) {
         alert(res)
-        // To do something ..
+        // To do something ...
     }
   ```
 

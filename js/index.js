@@ -41,10 +41,21 @@ window.onload = function() {
     }
     /**
      * @function payForCallbackIos
-     * @param {message: '', status: 1} res  // status: 0 --> fail, 1 --> success
+     * @param {message: '', status: 1} res  
+     * // status: {
+     *       '0': 'Network Error',
+     *       '1': 'Success',
+     *       '2': 'The payment function of the mall is temporarily closed',
+     *       '3': 'Wrong payment currency type of mall',
+     *       '4': 'Wrong amount',
+     *       '5': 'The mall is not a trusted address',
+     *       '6': 'Repeat payment for order',
+     *       '7': 'Payment account address does not exist',
+     *       '8': 'Insufficient account balance'
+     *    }
      */
     function payForCallbackIos(res) {
         alert(res)  
-        // To do something .. 
+        // To do something ... 
     }
 }
