@@ -503,7 +503,7 @@ This function is used to call each other's methods across platforms to achieve c
         "data": {
             "orderId": "16003452114327",
             "message": "没有对应的订单ID！",
-            "status": 0 // 0 没有对应的订单 1 订单确认收货成功
+            "status": 0 // 0 没有对应的订单 1 订单已完成 9订单退款成功
         },
         "timestamp": "17/10/2020 02:55:18056"
      }
