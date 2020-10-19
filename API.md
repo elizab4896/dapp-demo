@@ -7,6 +7,8 @@ This function is used to call each other's methods across platforms to achieve c
 * <a href="#2">How to get the exchange rate?</a>
 * <a href="#3">How to call payment?</a>
 * <a href="#4">How to view reports?</a>
+* <a href="#11">How to confirm order？</a>
+* <a href="#12">How to refund order？</a>
 
 ## Function
 
@@ -157,7 +159,7 @@ This function is used to call each other's methods across platforms to achieve c
          "status": "1",
          "message": "SECCESS",
          "data": {
-             "status": 1 // 1 Unpaid,  200 SUCCESS
+             "status": 1 // 1 Unpaid,  200 SUCCESS 9 Refund
          },
          "timestamp": "08/07/2020 08:20:59679"
      }
@@ -177,12 +179,75 @@ This function is used to call each other's methods across platforms to achieve c
          "data": [
              {
                  "orderId": "6", // Order Number
-                 "status": 8, // 1 Account not received, 8 Received account
+                 "status": 8, // 1 Account not received, 8 Received account 9 Refund
                  "ptype": "GMC" // Coin type
              },
             ...
          ],
          "timestamp": "10/07/2020 06:14:27518"
+     }
+     ```
+
+     5. <a name="11">Order Confirm</a>
+     ```Java
+     /**
+      * address: Merchant authentication address
+      */
+     Post Request
+     https://api.gmc-core.com/order/v3/api/{key}/storePay/confirm
+
+     {
+        "data":"Dt5uLnLH5+gMMdePol7imYKbxAelexJLOOzAFoN5hiQGYWcmNV+eG5jCBxx7IoHZN01Hgr53+D6oofH+3FwejiA5HwzNVKJllO9BsZz7WHmApIQ8qvt7cXopS6U5gWDWwrVcK/ORWvKXJtJkM0dSf+aIVD6rHPm1FGoj7XQ0ogo="
+     }
+
+    
+        //The encrypted public key and {key} needs to be applied for.Be sure to keep these two information confidential. If it is leaked, the consequences will be borne by yourself. The value of data is the returned string of JSON encrypted by RSA asymmetric algorithm. The following is a pseudo code example.
+        JSONObject data = new JSONObject();
+        data.put("orderId", "11111"); //orderId
+        data.put("address", "gmcd85da0d9e23650719757e83cf858e4209cd65139");  //address
+        String jsonString = RSAPublicKeySecurity.publicEncrypt(data.toJSONString(),pubblicKey);
+     
+     Response
+     {
+        "status": "1",
+        "message": "SUCCESS",
+        "data": {
+            "orderId": "16003452114327",
+            "message": "没有对应的订单ID！",
+            "status": 0 // 0 No Order Message 1 Order Confirm Success
+        },
+        "timestamp": "17/10/2020 02:55:18056"
+     }
+     ```
+
+  6. <a name="12">Order Refund</a>
+     ```Java
+     /**
+      * address: Merchant authentication address
+      */
+     Post Request
+     https://api.gmc-core.com/order/v3/api/{key}/storePay/refund
+        {
+            "data":"Dt5uLnLH5+gMMdePol7imYKbxAelexJLOOzAFoN5hiQGYWcmNV+eG5jCBxx7IoHZN01Hgr53+D6oofH+3FwejiA5HwzNVKJllO9BsZz7WHmApIQ8qvt7cXopS6U5gWDWwrVcK/ORWvKXJtJkM0dSf+aIVD6rHPm1FGoj7XQ0ogo="
+        }
+
+        //The encrypted public key and {key} needs to be applied for.Be sure to keep these two information confidential. If it is leaked, the consequences will be borne by yourself. The value of data is the returned string of JSON encrypted by RSA asymmetric algorithm. The following is a pseudo code example.
+        JSONObject data = new JSONObject();
+        data.put("orderId", "11111"); //orderId
+        data.put("address", "gmcd85da0d9e23650719757e83cf858e4209cd65139");  //address
+        String jsonString = RSAPublicKeySecurity.publicEncrypt(data.toJSONString(),pubblicKey);
+     
+     Response
+     {
+        "status": "1",
+        "message": "SECCESS",
+        "data": {
+            "orderId": "16003452114327",
+            "message": "没有对应的订单ID！",
+            "status": 0 // 0 No Order Message 1 Order Completed 9 Order Refund Success
+
+        },
+        "timestamp": "17/10/2020 02:55:18056"
      }
      ```
   
@@ -204,6 +269,8 @@ This function is used to call each other's methods across platforms to achieve c
 * <a href="#6">如何获取汇率？</a>
 * <a href="#7">如何调用支付？</a>
 * <a href="#8">如何查看报表？</a>
+* <a href="#9">如何确认收货？</a>
+* <a href="#10">如何申请退款？</a>
 
 ## 功能函数
 
@@ -351,7 +418,7 @@ This function is used to call each other's methods across platforms to achieve c
          "status": "1",
          "message": "SECCESS",
          "data": {
-             "status": 1 // 1 Unpaid,  200 SUCCESS
+             "status": 1 // 1 Unpaid,  200 SUCCESS 9 Refund
          },
          "timestamp": "08/07/2020 08:20:59679"
      }
@@ -371,12 +438,74 @@ This function is used to call each other's methods across platforms to achieve c
          "data": [
              {
                  "orderId": "6", // Order Number
-                 "status": 8, // 1 Account not received, 8 Received account
+                 "status": 8, // 1 Account not received, 8 Received account 9 Refund
                  "ptype": "GMC" // Coin type
              },
             ...
          ],
          "timestamp": "10/07/2020 06:14:27518"
+     }
+     ```
+
+  5. <a name="9">订单确认收货</a>
+     ```Java
+     /**
+      * address: Merchant authentication address
+      */
+     Post Request
+     https://api.gmc-core.com/order/v3/api/{key}/storePay/confirm
+
+     {
+        "data":"Dt5uLnLH5+gMMdePol7imYKbxAelexJLOOzAFoN5hiQGYWcmNV+eG5jCBxx7IoHZN01Hgr53+D6oofH+3FwejiA5HwzNVKJllO9BsZz7WHmApIQ8qvt7cXopS6U5gWDWwrVcK/ORWvKXJtJkM0dSf+aIVD6rHPm1FGoj7XQ0ogo="
+     }
+
+    
+        //其中加密的公钥需要申请，请求路径的{key}也需要申请，务必要保密好这两个信息，如果泄露，后果自负。data的值是RSA非对称算法加密的json返回字符串，下面是一个伪代码示例：
+        JSONObject data = new JSONObject();
+        data.put("orderId", "11111"); //orderId
+        data.put("address", "gmcd85da0d9e23650719757e83cf858e4209cd65139");  //address
+        String jsonString = RSAPublicKeySecurity.publicEncrypt(data.toJSONString(),pubblicKey);
+     
+     Response
+     {
+        "status": "1",
+        "message": "SECCESS",
+        "data": {
+            "orderId": "16003452114327",
+            "message": "没有对应的订单ID！",
+            "status": 0 // 0 没有对应的订单 1 订单确认收货成功
+        },
+        "timestamp": "17/10/2020 02:55:18056"
+     }
+     ```
+
+  6. <a name="10">订单申请退款</a>
+     ```Java
+     /**
+      * address: Merchant authentication address
+      */
+     Post Request
+     https://api.gmc-core.com/order/v3/api/{key}/storePay/refund
+        {
+            "data":"Dt5uLnLH5+gMMdePol7imYKbxAelexJLOOzAFoN5hiQGYWcmNV+eG5jCBxx7IoHZN01Hgr53+D6oofH+3FwejiA5HwzNVKJllO9BsZz7WHmApIQ8qvt7cXopS6U5gWDWwrVcK/ORWvKXJtJkM0dSf+aIVD6rHPm1FGoj7XQ0ogo="
+        }
+
+        //其中加密的公钥需要申请，请求路径的{key}也需要申请，务必要保密好这两个信息，如果泄露，后果自负。data的值是RSA非对称算法加密的json返回字符串，下面是一个伪代码示例：
+        JSONObject data = new JSONObject();
+        data.put("orderId", "11111"); //orderId
+        data.put("address", "gmcd85da0d9e23650719757e83cf858e4209cd65139");  //address
+        String jsonString = RSAPublicKeySecurity.publicEncrypt(data.toJSONString(),pubblicKey);
+     
+     Response
+     {
+        "status": "1",
+        "message": "SECCESS",
+        "data": {
+            "orderId": "16003452114327",
+            "message": "没有对应的订单ID！",
+            "status": 0 // 0 没有对应的订单 1 订单确认收货成功
+        },
+        "timestamp": "17/10/2020 02:55:18056"
      }
      ```
   
